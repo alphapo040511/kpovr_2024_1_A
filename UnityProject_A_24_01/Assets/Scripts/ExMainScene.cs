@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;                                 //UI 사용하기 위해추가
+using UnityEngine.SceneManagement;                    //UI 씬 매니팅을 하기위해 추가
+ 
 
 public class ExMainScene : MonoBehaviour
 {
-    public void GoToShootGame()                                  //버튼이 호출 할 함수를 제작
+    public Text PointUI;                              //UI 변수 추가
+    void Start()
     {
-        SceneManager.LoadScene("GameScene_Gun");                  //Scene 이동
+        PointUI.text = PlayerPrefs.GetInt("Point").ToString();    //저장된 포인트 점수를 UI 표시
     }
-    public void GoToJumpGame()                                  //버튼이 호출 할 함수를 제작
+
+    // Update is called once per frame
+    public void GoToGame()
     {
-        SceneManager.LoadScene("GameScene_Jump");                  //Scene 이동
-    }
-    public void GoExit()                                        //버튼이 호출 할 함수를 제작
-    {
-        Application.Quit();                                         //게임 종료
+        SceneManager.LoadScene("Scenes04_12_shoot");             //게임 씬으로 들어간다.
     }
 }
